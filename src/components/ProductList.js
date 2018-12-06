@@ -9,9 +9,11 @@ import './ProductList.scss';
 
 class ProductList extends React.Component {
     handleProductRender = () => {
+        console.log('product render');
         const { type, productActions } = this.props;
+        console.log(type);
         if (type === 'recommendedInStore') {
-            this.props.recommendedInStore.map((item) => (
+            return this.props.recommendedInStore.map((item) => (
                 <Product
                     key={item.id}
                     image={item.image}
@@ -22,13 +24,14 @@ class ProductList extends React.Component {
             ))
         }
         if (type === 'trendingNow') {
-            this.props.recommendedOnline.map(item => (
+            return this.props.trendingNow.map(item => (
                 <Product
                     key={item.id}
                     image={item.image}
                     name={item.name}
                     category={item.category}
                     price={item.price}
+                    trendingNow
                 />
             ))
         }

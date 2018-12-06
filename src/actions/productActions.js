@@ -13,12 +13,13 @@ export function fetchProductInfo(gender) {
     return dispatch => {
         dispatch({ type: types.UPDATE_LOADING, isLoading: true })
         setTimeout(() => {
-            return fetch(`http://10.16.2.55:8080/store/products/v1?store=NLD-502&type=${gender}`)
+            return fetch(`http://10.22.2.224:8080/store/products/v1?store=NLD-502&type=${gender}`)
                 .then(response => {
                     return response.json();
                 })
                 .then(json => {
                     console.log(json);
+                    dispatch({ type: types.RECEIVE_DATA, data: json })
                     dispatch({ type: types.UPDATE_VIEW, page: 'results' })
                     dispatch({ type: types.UPDATE_LOADING, isLoading: false })
                 })

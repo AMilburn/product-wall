@@ -1,15 +1,39 @@
 .productCard {
+    position: relative;
     width: 20%;
     &__image {
-        height: 250px;
+        height: 220px;
         width: calc(100% - 10px);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
+        background-color: #F5F5F5;
+        &.trending {
+            height: 320px;
+        }
     }
     &:last-of-type {
         .productCard__image {
             width: 100%;
         }
+        .productCard__order {
+            right: 4px;
+        }
+    }
+    &__order {
+        position: absolute;
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: 14px;
+        top: 4px;
+        background: white;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+    &__bag {
+        font-size: 30px;
     }
 }
