@@ -1,28 +1,51 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import React from 'react';
+import LandingPage from './components/LandingPage';
+import classNames from 'classnames';
 
-class App extends Component {
+import './App.scss';
+
+class App extends React.Component {
   render() {
+    const { ui } = this.props;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <div className={classNames('loadingState', {
+            'loaded': !ui.isLoading,
+          })}
+        >
+          <div className="loadingState__container">
+            <i className="loadingState__swoosh g72-swoosh" />
+            <p className="text-color-primary-light headline-sm-base">Loading recommended products...</p>
+          </div>
+        </div>
+        <div className={classNames('appContainer', {
+            'loaded': !ui.isLoading,
+          })}
+        >
+          <button
+            className="testButton"
+            onClick={this.handleButton}
+          />
+          <LandingPage />
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+LandingPage.propTypes = {
+  ui: PropTypes.object,
+};
+
+function mapStateToProps(state) {
+  return {
+    ui: state.ui,
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  null,
+)(App);

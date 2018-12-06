@@ -1,0 +1,15 @@
+.productCard {
+    width: 20%;
+    &__image {
+        height: 250px;
+        width: calc(100% - 10px);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    &:last-of-type {
+        .productCard__image {
+            width: 100%;
+        }
+    }
+}

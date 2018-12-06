@@ -1,0 +1,48 @@
+.loadingState {
+    background: #111111;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // display: none; // remove later!!!
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    &__swoosh {
+        font-size: 72px;
+        color: white;
+    }
+    &.loaded {
+        opacity: 0;
+        z-index: 0;
+    }
+}
+.appContainer {
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-around;
+    padding: 0 100px;
+    &.loaded {
+        z-index: 1;
+        position: absolute;
+        width: 100%;
+    }
+}
+.testButton {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
