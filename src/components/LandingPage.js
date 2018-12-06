@@ -11,7 +11,7 @@ import "./LandingPage.scss";
 
 class LandingPage extends React.Component {
   render() {
-    const { productActions, ui } = this.props;
+    const { productActions, ui, user } = this.props;
     return (
       <div>
         {ui.page === "initial" && (
@@ -34,6 +34,7 @@ class LandingPage extends React.Component {
         {ui.page === "signIn" && <SignIn />}
         {ui.page === "results" && (
           <React.Fragment>
+            <p className="headline-md-brand">Hello {user.ExternalImageId}. How are you doing today?</p>
             <ProductList
               title={categories[0].name}
               key={categories[0].name}
@@ -53,12 +54,14 @@ class LandingPage extends React.Component {
 
 LandingPage.propTypes = {
   ui: PropTypes.object,
+  user: PropTypes.object,
   productActions: PropTypes.object
 };
 
 function mapStateToProps(state) {
   return {
-    ui: state.ui
+    ui: state.ui,
+    user: state.userData,
   };
 }
 

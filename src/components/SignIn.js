@@ -1,4 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
+import * as userActions from "../actions/userActions";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 import "./SignIn.scss";
 
@@ -66,13 +70,14 @@ class SignIn extends React.Component {
     // Draws current image from the video element into the canvas
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     // assign raw bytes to hidden input
-    document.getElementById("rawImage").value = canvas.toDataURL("image/jpg");
+    // document.getElementById("rawImage").value = canvas.toDataURL("image/jpg");
     this.submitUserSnapshot();
   }
   submitUserSnapshot() {
     // submit the form
     console.log("submitting snapshot");
-    document.getElementById("uploadForm").submit();
+    const canvas = document.getElementById("myCanvas");
+    this.props.userActions.fetchUserData(canvas.toDataURL("image/jpg"));
   }
   render() {
     const label = this.state.recognitionInProgress
@@ -81,7 +86,7 @@ class SignIn extends React.Component {
     return !this.state.error ? (
       <div className="landingPage__photo">
         <video
-          className="video"
+          className="hidden"
           width="400"
           height="400"
           id="video"
@@ -90,16 +95,8 @@ class SignIn extends React.Component {
         />
         <button className="ncss-btn-primary-dark">{label}</button>
         <p>
-          <canvas id="myCanvas" width="400" height="300" />
+          <canvas id="myCanvas" width="400" height="300" className="hidden" />
         </p>
-        <form
-          action="http://localhost:5555/api/recognize"
-          method="post"
-          encType="multipart/form-data"
-          id="uploadForm"
-        >
-          <input type="hidden" id="rawImage" name="rawImage" />
-        </form>
       </div>
     ) : (
       <div className="landingPage__photo">
@@ -109,4 +106,15 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+SignIn.propTypes = {
+  userActions: PropTypes.object
+};
+
+const mapDispatchToProps = dispatch => ({
+  userActions: bindActionCreators(userActions, dispatch)
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SignIn);

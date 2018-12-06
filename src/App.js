@@ -11,7 +11,7 @@ class App extends React.Component {
     const { ui } = this.props;
     return (
       <div>
-        <div className={classNames('loadingState', {
+        {ui.isLoading && <div className={classNames('loadingState', {
             'loaded': !ui.isLoading,
           })}
         >
@@ -19,17 +19,13 @@ class App extends React.Component {
             <i className="loadingState__swoosh g72-swoosh" />
             <p className="text-color-primary-light headline-sm-base">Loading recommended products...</p>
           </div>
-        </div>
-        <div className={classNames('appContainer', {
+        </div>}
+        {!ui.isLoading && <div className={classNames('appContainer', {
             'loaded': !ui.isLoading,
           })}
         >
-          <button
-            className="testButton"
-            onClick={this.handleButton}
-          />
           <LandingPage />
-        </div>
+        </div>}
       </div>
     );
   }
