@@ -24,11 +24,7 @@ class App extends React.Component {
             'loaded': !ui.isLoading,
           })}
         >
-          <button
-            className="testButton"
-            onClick={this.handleButton}
-          />
-          <LandingPage />
+        <LandingPage />
         </div>
       </div>
     );

@@ -1,2 +1,3 @@
 export const UPDATE_VIEW = 'UPDATE_VIEW';
 export const UPDATE_LOADING = 'UPDATE_LOADING';
+export const RECEIVE_DATA = 'RECEIVE_DATA';

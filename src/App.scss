@@ -6,7 +6,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // display: none; // remove later!!!
     transition: opacity .25s ease-in-out;
     -moz-transition: opacity .25s ease-in-out;
     -webkit-transition: opacity .25s ease-in-out;
@@ -38,11 +37,4 @@
         position: absolute;
         width: 100%;
     }
-}
-.testButton {
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
 }

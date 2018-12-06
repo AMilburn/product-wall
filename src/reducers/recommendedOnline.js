@@ -1,18 +1,15 @@
 import initialState from './initialState';
-// import {FETCH_STUFF, RECEIVE_STUFF} from '../actions/actionTypes';
+import {RECEIVE_DATA} from '../actions/actionTypes';
 
 export default function recommendedOnline(state = initialState.recommendedInStore, action) {
-//   let newState;
+  let newState;
 
   switch (action.type) {
-    // case FETCH_STUFF:
-    //   console.log('FETCH_STUFF Action')
-    //   return action;
 
-    // case RECEIVE_STUFF:
-    //   newState = action.stuff;
-    //   console.log('RECEIVE_STUFF Action')
-    //   return newState;
+    case RECEIVE_DATA:
+      console.log('RECEIVE_DATA RecommendedOnline Action')
+      newState = action.data.recommendedOnline;
+      return newState;
 
     default:
       return state;
