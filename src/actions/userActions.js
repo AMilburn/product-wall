@@ -1,4 +1,5 @@
 import * as types from "./actionTypes";
+import * as productActions from "./productActions";
 
 export function fetchUserData(imageData) {
   return dispatch => {
@@ -15,9 +16,10 @@ export function fetchUserData(imageData) {
       })
       .then(json => {
         // todo: check if actually recognised, token not expired, etc
+        dispatch(productActions.fetchProductInfo("girls")); // or boys depending on the payload
         dispatch({ type: types.RECOGNIZE_USER_RES, payload: json });
-        dispatch({ type: types.UPDATE_VIEW, page: 'results' });
-    })
+        dispatch({ type: types.UPDATE_VIEW, page: "results" });
+      })
       .catch(error => {
         console.log(error);
         dispatch({ type: types.RECOGNIZE_USER_ERR });
