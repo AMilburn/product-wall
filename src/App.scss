@@ -15,10 +15,6 @@
         align-items: center;
         flex-direction: column;
     }
-    &__swoosh {
-        font-size: 72px;
-        color: white;
-    }
     &.loaded {
         opacity: 0;
         z-index: 0;

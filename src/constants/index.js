@@ -1,14 +1,14 @@
 export const categories = [
     {
-        name: 'Recommended in store',
+        name: 'Recommended Products in Store',
         category: 'recommendedInStore',
     },
     {
-        name: 'Recommended online',
+        name: 'Recommended Products Online',
         category: 'recommendedOnline',
     },
     {
-        name: 'Trending Now',
+        name: 'Top Trending Products in Store',
         category: 'trendingNow',
     },
 ];

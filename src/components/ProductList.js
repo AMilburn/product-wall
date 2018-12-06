@@ -1,6 +1,4 @@
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import * as productActions from "../actions/productActions";
 import PropTypes from "prop-types";
 import React from "react";
 import Product from "./Product";
@@ -10,7 +8,7 @@ import "./ProductList.scss";
 class ProductList extends React.Component {
   handleProductRender = () => {
     console.log("product render");
-    const { type, productActions } = this.props;
+    const { type } = this.props;
     console.log(type);
     if (type === "recommendedInStore") {
       return this.props.recommendedInStore.map(item => (
@@ -74,13 +72,7 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    productActions: bindActionCreators(productActions, dispatch)
-  };
-}
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null,
 )(ProductList);
