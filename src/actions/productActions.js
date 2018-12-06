@@ -11,24 +11,24 @@ export function updateLoadingState(isLoading) {
 
 export function fetchProductInfo(gender) {
   return dispatch => {
-    dispatch({ type: types.UPDATE_LOADING, isLoading: true });
-    setTimeout(() => {
-      return fetch(
-        `http://10.22.2.224:8080/store/products/v1?store=NLD-502&type=${gender}`
-      )
-        .then(response => {
-          return response.json();
-        })
-        .then(json => {
-          console.log(json);
-          dispatch({ type: types.RECEIVE_DATA, data: json });
-          dispatch({ type: types.UPDATE_VIEW, page: "results" });
-          dispatch({ type: types.UPDATE_LOADING, isLoading: false });
-        })
-        .catch(error => {
-          console.log(error);
-          dispatch({ type: types.UPDATE_LOADING, isLoading: false });
-        });
-    }, 3000);
+    dispatch({ type: types.UPDATE_LOADING, isLoading: false });
+    // setTimeout(() => {
+    return fetch(
+      `http://10.22.2.224:8080/store/products/v1?store=NLD-502&type=${gender}`
+    )
+      .then(response => {
+        return response.json();
+      })
+      .then(json => {
+        console.log(json);
+        dispatch({ type: types.RECEIVE_DATA, data: json });
+        dispatch({ type: types.UPDATE_VIEW, page: "results" });
+        dispatch({ type: types.UPDATE_LOADING, isLoading: false });
+      })
+      .catch(error => {
+        console.log(error);
+        dispatch({ type: types.UPDATE_LOADING, isLoading: false });
+      });
+    // }, 3000);
   };
 }

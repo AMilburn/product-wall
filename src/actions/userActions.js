@@ -16,7 +16,11 @@ export function fetchUserData(imageData) {
       })
       .then(json => {
         // todo: check if actually recognised, token not expired, etc
-        dispatch(productActions.fetchProductInfo("girls")); // or boys depending on the payload
+        dispatch(
+          productActions.fetchProductInfo(
+            json.ExternalImageId === "Amanda" ? "girls" : "boys"
+          )
+        ); // or boys depending on the payload
         dispatch({ type: types.RECOGNIZE_USER_RES, payload: json });
         dispatch({ type: types.UPDATE_VIEW, page: "results" });
       })
