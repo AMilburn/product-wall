@@ -15,7 +15,11 @@ export function fetchUserData(imageData) {
         return res;
       })
       .then(json => {
-        // todo: check if actually recognised, token not expired, etc
+        if(!json.ExternalImageId) {
+          dispatch({ type: types.RECOGNIZE_USER_ERR });
+          dispatch({ type: types.UPDATE_VIEW, page: "error" });
+          return;
+        }
         dispatch(
           productActions.fetchProductInfo(
             json.ExternalImageId === "Amanda" ? "girls" : "boys"
@@ -27,6 +31,7 @@ export function fetchUserData(imageData) {
       .catch(error => {
         console.log(error);
         dispatch({ type: types.RECOGNIZE_USER_ERR });
+        dispatch({ type: types.UPDATE_VIEW, page: "error" });
       });
   };
 }

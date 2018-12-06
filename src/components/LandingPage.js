@@ -32,10 +32,20 @@ class LandingPage extends React.Component {
           </div>
         )}
         {ui.page === "signIn" && <SignIn />}
+        {ui.page === "error" && (
+          <div className="landingPage">
+            <p className="headline-md-brand">Become a member today</p>
+            <ProductList
+              title={categories[2].name}
+              key={categories[2].name}
+              type={categories[2].category}
+            />
+          </div>
+        )}
         {ui.page === "results" && (
           <React.Fragment>
             <p className="headline-md-brand">
-              Hello {user.ExternalImageId}. How are you doing today?
+              Hello {user.ExternalImageId}. Create the future of sport.
             </p>
             <ProductList
               title={categories[0].name}

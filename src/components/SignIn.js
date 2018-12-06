@@ -93,7 +93,7 @@ class SignIn extends React.Component {
           autoPlay
           onPlay={this.onVideoPlaying}
         />
-        <button className="ncss-btn-primary-dark">{label}</button>
+        <button className="headline-xlg-base">{label}</button>
         <p>
           <canvas id="myCanvas" width="400" height="300" className="hidden" />
         </p>
