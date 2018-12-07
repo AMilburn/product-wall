@@ -14,7 +14,7 @@ export function fetchProductInfo(gender) {
     dispatch({ type: types.UPDATE_LOADING, isLoading: false });
     // setTimeout(() => {
     return fetch(
-      `http://10.22.2.224:8080/store/products/v1?store=NLD-502&type=${gender}`
+      `http://10.22.18.239:8080/store/products/v1?store=NLD-502&type=${gender}`
     )
       .then(response => {
         return response.json();

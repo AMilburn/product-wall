@@ -15,14 +15,17 @@ export function fetchUserData(imageData) {
         return res;
       })
       .then(json => {
-        if(!json.ExternalImageId) {
+        if (!json.ExternalImageId) {
           dispatch({ type: types.RECOGNIZE_USER_ERR });
           dispatch({ type: types.UPDATE_VIEW, page: "error" });
           return;
         }
         dispatch(
           productActions.fetchProductInfo(
-            json.ExternalImageId === "Amanda" ? "girls" : "boys"
+            json.ExternalImageId === "Amanda" ||
+              json.ExternalImageId === "Rosie"
+              ? "girls"
+              : "boys"
           )
         ); // or boys depending on the payload
         dispatch({ type: types.RECOGNIZE_USER_RES, payload: json });
