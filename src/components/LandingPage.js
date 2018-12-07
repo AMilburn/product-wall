@@ -16,18 +16,26 @@ class LandingPage extends React.Component {
       <div>
         {ui.page === "initial" && (
           <div className="landingPage">
+            <div className="landingPage__greeting">
+              <p className="headline-md-brand">
+                Welcome to Nike
+              </p>
+              <i className="landingPage__swoosh g72-swoosh" />
+            </div>
             <ProductList
               title={categories[2].name}
               key={categories[2].name}
               type={categories[2].category}
             />
             <div className="landingPage__signIn">
+              <p className="headline-sm-base"><i className="g72-swoosh-plus" /> Members</p>
               <button
-                className="ncss-btn-primary-dark"
+                className="ncss-btn-primary-dark landingPage__button"
                 onClick={() => productActions.updateView("signIn")}
               >
                 Sign in
               </button>
+              <p className="headline-baseline-base">Get your personalized recommendations</p>
             </div>
           </div>
         )}
@@ -45,7 +53,7 @@ class LandingPage extends React.Component {
         {ui.page === "results" && (
           <React.Fragment>
             <p className="headline-md-brand">
-              Hello {user.ExternalImageId}. Create the future of sport.
+              Hello {user.ExternalImageId}. Here are some styles selected for you.
             </p>
             <ProductList
               title={categories[0].name}
